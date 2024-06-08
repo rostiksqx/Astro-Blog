@@ -142,6 +142,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdoc"] };
+"gay.mdoc": {
+	id: "gay.mdoc";
+  slug: "gay";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdoc"] };
 "i-love-homusapiens.mdoc": {
 	id: "i-love-homusapiens.mdoc";
   slug: "i-love-homusapiens";

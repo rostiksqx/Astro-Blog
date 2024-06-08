@@ -1,24 +1,58 @@
 ---
-import '../styles.css'
+import "../styles.css";
 
 export interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="title" content={title} />
+		<meta name="description" content={description ?? "Our Blog"} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<header
+			class="flex items-center justify-between px-4 py-3 bg-black text-white"
+		>
+			<div class="flex items-center">
+				<a class="mr-4" href="/">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-6 w-6"
+					>
+						<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+					</svg>
+					<span class="sr-only">Blog Logo</span>
+				</a>
+				<h1 class="text-lg font-bold">My Blog</h1>
+			</div>
+			<a href="/keystatic" class="hover:underline">Keystatic</a>
+			<nav class="flex items-center space-x-4">
+				<a class="hover:underline" href="/">Home</a>
+				<a class="hover:underline" href="/about">About</a>
+				<a class="hover:underline" href="/contacts">Contact</a>
+				<a class="hover:underline" href="/blog">Blog</a>
+			</nav>
+		</header>
 		<slot />
 	</body>
 </html>

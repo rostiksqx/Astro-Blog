@@ -16,15 +16,9 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} description={post.body}>
   <h1>{post.data.title}</h1>
-  <div class="md">
+  <div class="bg-red-500">
     <Content />
   </div>
 </Layout>
-
-<style>
-  .md {
-    @apply bg-red-400
-  }
-</style>

@@ -8,5 +8,11 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic(), tailwind()],
-  output: 'hybrid'
+  output: 'hybrid',
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true
+  }
 });

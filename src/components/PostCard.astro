@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  post : {
+    id: string;
+    slug: string;
+    body: string;
+    collection: string;
+    data: {title: string};
+  }
+}
+
+const { post } = Astro.props;
+
+const firstImage = post.body.match(/!\[.*\]\((.*)\)/);
+const imagePath = firstImage
+    ? firstImage[1].replace("../..", "src")
+    : "/photo.jpg";
+---
+<div class="group border border-[#3b2a22] h-full overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
+    <a class="absolute inset-0 z-10" href="#">
+      <span class="sr-only">View</span>
+    </a>
+    <img
+      src={imagePath}
+      alt="Coffee 3"
+      width="500"
+      height="400"
+      class="object-cover w-full md:h-60   h-64"
+      style="aspect-ratio: 500 / 400; object-fit: cover;"
+    />
+    <div class="bg-[#3b2a22] text-[#e9d7cb] h-full flex-none  flex-col w-full justify-between p-4 ">
+      <div>
+        <h3 class="font-semibold text-xl ">{post.data.title}</h3>
+        <p class="text-sm line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste obcaecati expedita esse non reiciendis minima. Ab eligendi fugiat ex tempore eveniet expedita laboriosam, temporibus dolores animi impedit molestiae neque omnis.</p>
+        
+      </div>
+
+      <h4 class="font-semibold text-lg md:text-xl ">$14.99</h4>
+    </div>
+  </div>

@@ -1,20 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
-
+import PostCard from "../components/PostCard.astro";
+import Header from "../components/Header.astro";
 
 const posts = await getCollection("posts");
+
 ---
 
-
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/zo5Poa0y3uQ
--->
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/mzW21ZwcLVG
--->
 
 <div class="flex flex-col min-h-[100dvh]">
   <header class="px-4 lg:px-6 h-14 flex items-center bg-[#3b2a22] text-white">
@@ -55,9 +48,9 @@ const posts = await getCollection("posts");
       <div class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm bg-white/80 p-10 rounded-lg">
         <div class="grid gap-4 px-10 md:grid-cols-2 md:gap-16">
           <div>
-            <h1 class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]">
-              Discover the Best Coffee Beans
-            </h1>
+            <Header>
+              Discover our shop
+            </Header>
             <p class="mx-auto max-w-[700px] text-[#3b2a22] md:text-xl ">
               Explore our selection of premium coffee beans, roasted to perfection for a delightful coffee
               experience.
@@ -77,42 +70,49 @@ const posts = await getCollection("posts");
         </div>
       </div>
     </section>
-    <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]">
-      <div class="container space-y-12 px-4 md:px-6">
+    <section class="w-full py-12 md:py-24 lg:py-40 bg-[#e9d7cb]">
+      <div class=" px-4 md:px-6">
         <div class="flex flex-col items-center justify-center space-y-4 text-center">
           <div class="space-y-2">
-            <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-[#3b2a22]">Our Coffee Varieties</h2>
+            <Header>Our Coffee Varieties</Header>
             <p class="max-w-[900px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Explore our selection of premium coffee beans, each with its own unique flavor profile.
             </p>
           </div>
         </div>
-        <div class="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:max-w-5xl">
-          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
-            <a class="absolute inset-0 z-10" href="#">
-              <span class="sr-only">View</span>
-            </a>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzre2GIOnfMSzPfp2dQoadKjWpGhOKOVaKGw&s"
-              alt="Coffee 3"
-              width="500"
-              height="400"
-              class="object-cover w-full h-64"
-              style="aspect-ratio: 500 / 400; object-fit: cover;"
-            />
-            <div class="bg-white p-4 ">
-              <h3 class="font-bold text-xl text-[#3b2a22]">Decaf Blend</h3>
-              <p class="text-sm text-[#3b2a22]">A smooth and flavorful decaf blend.</p>
-              <h4 class="font-semibold text-lg md:text-xl text-[#3b2a22]">$14.99</h4>
-            </div>
+        <!-- <PostCard class="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:max-w-5xl"> -->
+          <div class="grid md:grid-cols-3 lg:px-64 md:px-10 md:gap-x-7 sm:px-48 px-28 2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12">
+<!--           
+            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
+              <a class="absolute inset-0 z-10" href="#">
+                <span class="sr-only">View</span>
+              </a>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzre2GIOnfMSzPfp2dQoadKjWpGhOKOVaKGw&s"
+                alt="Coffee 3"
+                width="500"
+                height="400"
+                class="object-cover w-full h-64"
+                style="aspect-ratio: 500 / 400; object-fit: cover;"
+              />
+              <div class="bg-white p-4 ">
+                <h3 class="font-bold text-xl text-[#3b2a22]">Decaf Blend</h3>
+                <p class="text-sm text-[#3b2a22]">A smooth and flavorful decaf blend.</p>
+                <h4 class="font-semibold text-lg md:text-xl text-[#3b2a22]">$14.99</h4>
+              </div>
+            </div> -->
+  
+            {posts.slice(0,3).map(p => <PostCard post={p}/>)}
+            
           </div>
+
           
         </div>
         <div class="w-full flex items-center justify-center">
 
-          <div class=" container w-40 flex justify-center">
+          <div class=" w-40 flex justify-center">
 
-            <Button>
+            <Button >
               Explore more
             </Button>
   
@@ -122,9 +122,9 @@ const posts = await getCollection("posts");
       </div>
     </section>
     <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]">
-      <div class="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+      <div class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
         <div class="space-y-3">
-          <h2 class="text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#3b2a22]">Contact Us</h2>
+          <Header>Contact Us</Header>
           <p class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
             Have a question or want to learn more? Fill out the form below and we'll get back to you as soon as
             possible.
@@ -181,10 +181,10 @@ const posts = await getCollection("posts");
         </div>
       </div>
     </section>
-    <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]">
-      <div class="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+    <section class="w-full py-12 md:py-24 lg:pt-32 lg:pb-52 bg-[#e9d7cb]">
+      <div class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
         <div class="space-y-3">
-          <h2 class="text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#3b2a22]">Get in Touch</h2>
+          <Header>Get in Touch</Header>
           <p class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
             Have a question or want to learn more? You can reach us through the following channels.
           </p>

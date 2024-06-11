@@ -4,6 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
+RUN npx astro add node
 RUN npm run build
 
 ENV HOST=0.0.0.0

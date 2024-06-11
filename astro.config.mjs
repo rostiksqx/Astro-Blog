@@ -9,10 +9,4 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic(), tailwind()],
   output: 'hybrid',
-  server: {
-    watch: {
-      usePolling: true,
-    },
-    host: true
-  }
 });

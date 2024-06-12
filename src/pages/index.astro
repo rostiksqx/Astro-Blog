@@ -9,7 +9,7 @@ const posts = await getCollection("posts");
 ---
 
 
-<div class="flex flex-col min-h-[100dvh]">
+<div class="flex flex-col">
   <header class="px-4 lg:px-6 h-14 flex items-center bg-[#3b2a22] text-white">
     <a class="flex items-center gap-x-2 justify-center" href="#">
       <svg
@@ -80,27 +80,8 @@ const posts = await getCollection("posts");
             </p>
           </div>
         </div>
-        <!-- <PostCard class="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:max-w-5xl"> -->
           <div class="grid md:grid-cols-3  md:px-10 md:gap-x-7 sm:px-48 px-20  2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12">
-<!--           
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
-              <a class="absolute inset-0 z-10" href="#">
-                <span class="sr-only">View</span>
-              </a>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzre2GIOnfMSzPfp2dQoadKjWpGhOKOVaKGw&s"
-                alt="Coffee 3"
-                width="500"
-                height="400"
-                class="object-cover w-full h-64"
-                style="aspect-ratio: 500 / 400; object-fit: cover;"
-              />
-              <div class="bg-white p-4 ">
-                <h3 class="font-bold text-xl text-[#3b2a22]">Decaf Blend</h3>
-                <p class="text-sm text-[#3b2a22]">A smooth and flavorful decaf blend.</p>
-                <h4 class="font-semibold text-lg md:text-xl text-[#3b2a22]">$14.99</h4>
-              </div>
-            </div> -->
+
   
             {posts.slice(0,3).map(p => <PostCard post={p}/>)}
             

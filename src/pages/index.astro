@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
-import PostCard from "../components/PostCard.astro";
+import ProductCard from "../components/ProductCard.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ContactUs from "../components/ContactUs.astro";
@@ -62,7 +62,9 @@ const cards = await getCollection("cards");
         <div
           class="grid md:grid-cols-3 md:px-10 md:gap-x-7 sm:px-48 px-20 2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12"
         >
-          {cards.map((card) => <PostCard card={card} />)}
+          {cards.slice(0, 3).map((card) => (
+            <ProductCard card={card} key={card.data.title} />
+          ))}
         </div>
       </div>
       <div class="w-full flex items-center justify-center">

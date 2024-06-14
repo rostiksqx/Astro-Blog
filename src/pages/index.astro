@@ -4,10 +4,12 @@ import Button from "../components/Button.astro";
 import PostCard from "../components/PostCard.astro";
 import Header from "../components/Header.astro";
 
-const cards = await getCollection("cards");
+const posts = await getCollection("posts");
+
 ---
 
-<div class="flex flex-col min-h-[100dvh]">
+
+<div class="flex flex-col">
   <header class="px-4 lg:px-6 h-14 flex items-center bg-[#3b2a22] text-white">
     <a class="flex items-center gap-x-2 justify-center" href="#">
       <svg
@@ -24,266 +26,245 @@ const cards = await getCollection("cards");
       >
         <path d="M10 2v2"></path>
         <path d="M14 2v2"></path>
-        <path
-          d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"
-        ></path>
+        <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"></path>
         <path d="M6 2v2"></path>
       </svg>
       <span class="">DristalnyaCoffee</span>
     </a>
     <nav class="ml-auto flex gap-4 sm:gap-6">
-      <a
-        href="#"
-        class="text-sm font-medium hover:underline underline-offset-4"
-      >
+      <a href="#" class="text-sm font-medium hover:underline underline-offset-4">
         Shop
       </a>
-      <a
-        class="text-sm font-medium hover:underline underline-offset-4"
-        href="#"
-      >
+      <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
         About
       </a>
-      <a
-        class="text-sm font-medium hover:underline underline-offset-4"
-        href="#"
-      >
+      <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
         Contact
       </a>
     </nav>
   </header>
   <main class="flex-1">
-    <section
-      class="w-full pt-12 md:pt-24 lg:pt-32 bg-[url('/coffee-beans.jpg')] bg-cover bg-center bg-no-repeat"
-    >
-      <div
-        class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm bg-white/80 p-10 rounded-lg"
-      >
+    <section class="w-full pt-12 md:pt-24 lg:pt-32 bg-[url('/coffee-beans.jpg')] bg-cover bg-center bg-no-repeat">
+      <div class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm bg-white/80 p-10 rounded-lg">
         <div class="grid gap-4 px-10 md:grid-cols-2 md:gap-16">
           <div>
-            <Header> Discover our shop </Header>
-            <p class="mx-auto max-w-[700px] text-[#3b2a22] md:text-xl">
-              Explore our selection of premium coffee beans, roasted to
-              perfection for a delightful coffee experience.
+            <Header>
+              Discover our shop
+            </Header>
+            <p class="mx-auto max-w-[700px] text-[#3b2a22] md:text-xl ">
+              Explore our selection of premium coffee beans, roasted to perfection for a delightful coffee
+              experience.
             </p>
           </div>
           <div class="w-full h-full aspect-[16/9]">
-            <img
-              src="https://www.coffeehit.co.uk/cdn/shop/articles/coffee-beans-101-the-4-most-popular-beans-explained_5400x.jpg?v=1708448895"
-              width="1270"
-              height="700"
-              alt="Coffee Beans"
-              style=""
-              class="mx-auto aspect-[16/9] overflow-hidden rounded-t-xl object-cover"
-            />
+              <img
+                src="https://www.coffeehit.co.uk/cdn/shop/articles/coffee-beans-101-the-4-most-popular-beans-explained_5400x.jpg?v=1708448895"
+                width="1270"
+                height="700"
+                alt="Coffee Beans"
+                style=""
+                class="mx-auto aspect-[16/9] overflow-hidden rounded-t-xl object-cover"
+              />          
           </div>
+
         </div>
       </div>
     </section>
     <section class="w-full py-24 lg:py-40 bg-[#e9d7cb]">
-      <div class="px-4 md:px-6">
-        <div
-          class="flex flex-col items-center justify-center space-y-4 text-center"
-        >
+      <div class=" px-4 md:px-6">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
           <div class="space-y-2">
             <Header>Our Coffee Varieties</Header>
-            <p
-              class="max-w-[900px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-            >
-              Explore our selection of premium coffee beans, each with its own
-              unique flavor profile.
+            <p class="max-w-[900px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Explore our selection of premium coffee beans, each with its own unique flavor profile.
             </p>
           </div>
         </div>
-        <div
-          class="grid md:grid-cols-3 md:px-10 md:gap-x-7 sm:px-48 px-20 2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12"
-        >
-          {cards.map((card) => <PostCard card={card} />)}
+          <div class="grid md:grid-cols-3  md:px-10 md:gap-x-7 sm:px-48 px-20  2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12">
+
+  
+            {posts.slice(0,3).map(p => <PostCard post={p}/>)}
+            
+          </div>
+
+          
+        </div>
+        <div class="w-full flex items-center justify-center">
+
+          <div class=" w-40 flex justify-center">
+
+            <Button >
+              Explore more
+            </Button>
+  
+          </div>        
+        </div>
+
+      </div>
+    </section>
+    <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]">
+      <div class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+        <div class="space-y-3">
+          <Header>Contact Us</Header>
+          <p class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
+            Have a question or want to learn more? Fill out the form below and we'll get back to you as soon as
+            possible.
+          </p>
+        </div>
+        <div class="mx-auto w-full max-w-sm space-y-2">
+          <form class="flex flex-col space-y-2">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
+                  for="name"
+                >
+                  Name
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
+                  id="name"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
+                  for="email"
+                >
+                  Email
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
+                  id="email"
+                  placeholder="Enter your email"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div class="space-y-1">
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
+                for="message"
+              >
+                Message
+              </label>
+              <textarea
+                class="flex w-full rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px] bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
+                id="message"
+                placeholder="Enter your message"
+              ></textarea>
+            </div>
+            <Button type="submit">
+              Submit
+            </Button>
+          </form>
         </div>
       </div>
-      <div class="w-full flex items-center justify-center">
-        <div class="w-40 flex justify-center">
-          <Button> Explore more </Button>
+    </section>
+    <section class="w-full py-12 md:py-24 lg:pt-32 lg:pb-52 bg-[#e9d7cb]">
+      <div class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+        <div class="space-y-3">
+          <Header>Get in Touch</Header>
+          <p class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
+            Have a question or want to learn more? You can reach us through the following channels.
+          </p>
+        </div>
+        <div class="mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:max-w-5xl">
+          <div class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-8 w-8 text-[#3b2a22]"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <h3 class="font-bold text-[#3b2a22]">Phone</h3>
+            <p class="text-[#3b2a22] ">+1 (555) 555-5555</p>
+          </div>
+          <div class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-8 w-8 text-[#3b2a22]"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <h3 class="font-bold text-[#3b2a22]">Email</h3>
+            <p class="text-[#3b2a22">info@coffeeshop.com</p>
+          </div>
+          <div class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-8 w-8 text-[#3b2a22] "
+            >
+              <line x1="2" x2="5" y1="12" y2="12"></line>
+              <line x1="19" x2="22" y1="12" y2="12"></line>
+              <line x1="12" x2="12" y1="2" y2="5"></line>
+              <line x1="12" x2="12" y1="19" y2="22"></line>
+              <circle cx="12" cy="12" r="7"></circle>
+            </svg>
+            <h3 class="font-bold text-[#3b2a22]">Address</h3>
+            <p class="text-[#3b2a22] ">123 Main Street, Anytown USA</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
-  <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]">
-    <div
-      class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10"
-    >
-      <div class="space-y-3">
-        <Header>Contact Us</Header>
-        <p
-          class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-        >
-          Have a question or want to learn more? Fill out the form below and
-          we'll get back to you as soon as possible.
-        </p>
-      </div>
-      <div class="mx-auto w-full max-w-sm space-y-2">
-        <form class="flex flex-col space-y-2">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-1">
-              <label
-                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
-                for="name"
-              >
-                Name
-              </label>
-              <input
-                class="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
-                id="name"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div class="space-y-1">
-              <label
-                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
-                for="email"
-              >
-                Email
-              </label>
-              <input
-                class="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
-                id="email"
-                placeholder="Enter your email"
-                type="email"
-              />
-            </div>
-          </div>
-          <div class="space-y-1">
-            <label
-              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#3b2a22]"
-              for="message"
-            >
-              Message
-            </label>
-            <textarea
-              class="flex w-full rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px] bg-[#e9d7cb] border-[#3b2a22] focus:ring-[#3b2a22]"
-              id="message"
-              placeholder="Enter your message"></textarea>
-          </div>
-          <Button type="submit"> Submit </Button>
-        </form>
-      </div>
-    </div>
-  </section>
-  <section class="w-full py-12 md:py-24 lg:pt-32 lg:pb-52 bg-[#e9d7cb]">
-    <div
-      class="grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10"
-    >
-      <div class="space-y-3">
-        <Header>Get in Touch</Header>
-        <p
-          class="mx-auto max-w-[600px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-        >
-          Have a question or want to learn more? You can reach us through the
-          following channels.
-        </p>
-      </div>
-      <div
-        class="mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:max-w-5xl"
-      >
-        <div
-          class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-8 w-8 text-[#3b2a22]"
-          >
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-            ></path>
-          </svg>
-          <h3 class="font-bold text-[#3b2a22]">Phone</h3>
-          <p class="text-[#3b2a22]">+1 (555) 555-5555</p>
-        </div>
-        <div
-          class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-8 w-8 text-[#3b2a22]"
-          >
-            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-          </svg>
-          <h3 class="font-bold text-[#3b2a22]">Email</h3>
-          <p class="text-[#3b2a22">info@coffeeshop.com</p>
-        </div>
-        <div
-          class="flex flex-col items-center justify-center space-y-2 p-4 rounded-lg bg-white shadow-lg"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-8 w-8 text-[#3b2a22]"
-          >
-            <line x1="2" x2="5" y1="12" y2="12"></line>
-            <line x1="19" x2="22" y1="12" y2="12"></line>
-            <line x1="12" x2="12" y1="2" y2="5"></line>
-            <line x1="12" x2="12" y1="19" y2="22"></line>
-            <circle cx="12" cy="12" r="7"></circle>
-          </svg>
-          <h3 class="font-bold text-[#3b2a22]">Address</h3>
-          <p class="text-[#3b2a22]">123 Main Street, Anytown USA</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<footer
-  class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#3b2a22] text-white"
->
-  <p class="text-xs">© 2024 Coffee Shop. All rights reserved.</p>
-  <nav class="sm:ml-auto flex gap-4 sm:gap-6">
-    <a class="text-xs hover:underline underline-offset-4" href="#"> About </a>
-    <a class="text-xs hover:underline underline-offset-4" href="#"> Contact </a>
-    <a class="text-xs hover:underline underline-offset-4" href="#"> Privacy </a>
-    <div class="flex gap-2">
-      <a class="text-gray-400 hover:text-white" href="#">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-5 w-5"
-        >
-          <path
-            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-          ></path>
-        </svg>
-        <span class="sr-only">Twitter</span>
+  <footer class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#3b2a22] text-white">
+    <p class="text-xs">© 2024 Coffee Shop. All rights reserved.</p>
+    <nav class="sm:ml-auto flex gap-4 sm:gap-6">
+      <a class="text-xs hover:underline underline-offset-4" href="#">
+        About
       </a>
-    </div>
-  </nav>
-</footer>
+      <a class="text-xs hover:underline underline-offset-4" href="#">
+        Contact
+      </a>
+      <a class="text-xs hover:underline underline-offset-4" href="#">
+        Privacy
+      </a>
+      <div class="flex gap-2">
+        <a class="text-gray-400 hover:text-white" href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-5 w-5"
+          >
+            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </div>
+    </nav>
+  </footer>
+</div>

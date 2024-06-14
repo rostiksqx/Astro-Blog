@@ -4,17 +4,13 @@ import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import tailwind from "@astrojs/tailwind";
 
-import vercel from "@astrojs/vercel/serverless";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic(), tailwind()],
-  output: 'hybrid',
-  server: {
-    watch: {
-      usePolling: true
-    },
-    host: true
-  },
-  adapter: vercel()
+  output: 'server',
+  adapter: node({
+    mode: "standalone"
+  })
 });

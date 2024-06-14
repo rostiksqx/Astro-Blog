@@ -72,7 +72,7 @@ const secretKey = import.meta.env.SECRET_KEY;
             name="message"></textarea>
         </div>
         <Button type="submit">Submit</Button>
-        <div id="result"></div>
+        <div id="result" class="text-xl text-red-600 font-bold"></div>
       </form>
     </div>
   </div>
@@ -105,7 +105,7 @@ const secretKey = import.meta.env.SECRET_KEY;
           result.innerHTML = json.message;
         } else {
           console.log(response);
-          result.innerHTML = json.message;
+          result.innerHTML = "Something went wrong!";
         }
       })
       .catch((error) => {

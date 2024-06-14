@@ -4,23 +4,23 @@
   <p class="text-xs">© 2024 Coffee Shop. All rights reserved.</p>
   <nav class="sm:ml-auto flex gap-4 sm:gap-6">
     <a
-        href="#shop"
-        class="text-sm font-medium hover:underline underline-offset-4"
-      >
-        Shop
-      </a>
-      <a
-        class="text-sm font-medium hover:underline underline-offset-4"
-        href="#about"
-      >
-        About
-      </a>
-      <a
-        class="text-sm font-medium hover:underline underline-offset-4"
-        href="#contact"
-      >
-        Contact Us
-      </a>
+      href="#shop"
+      class="text-sm font-medium hover:underline underline-offset-4 scroll-link"
+    >
+      Shop
+    </a>
+    <a
+      class="text-sm font-medium hover:underline underline-offset-4 scroll-link"
+      href="#about"
+    >
+      About
+    </a>
+    <a
+      class="text-sm font-medium hover:underline underline-offset-4 scroll-link"
+      href="#contact"
+    >
+      Contact Us
+    </a>
     <div class="flex gap-2">
       <a class="text-gray-400 hover:text-white" href="#">
         <svg
@@ -44,3 +44,29 @@
     </div>
   </nav>
 </footer>
+
+<script>
+  import { onMount } from "solid-js";
+
+  onMount(() => {
+    const scrollLinks = document.querySelectorAll(".scroll-link");
+
+    scrollLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const href = link.getAttribute("href");
+        const targetElement = document.querySelector(href || "") as HTMLElement;
+
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop;
+
+          window.scroll({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  });
+</script>

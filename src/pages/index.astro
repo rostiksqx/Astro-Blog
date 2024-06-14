@@ -2,16 +2,15 @@
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import ProductCard from "../components/ProductCard.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import ContactUs from "../components/ContactUs.astro";
-import Contacts from "../components/Contacts.astro";
+import Layout from "../layouts/Layout.astro";
 
 const cards = await getCollection("cards");
 ---
 
-<div class="flex flex-col">
-  <Header />
+<Layout
+  title="Dristalnya Coffee"
+  description="Dristalnya Coffee where you can buy something drugs"
+>
   <main class="flex-1">
     <section
       class="w-full pt-12 md:pt-24 lg:pt-32 bg-[url('/coffee-beans.jpg')] bg-cover bg-center bg-no-repeat"
@@ -21,8 +20,10 @@ const cards = await getCollection("cards");
       >
         <div class="grid gap-4 px-10 md:grid-cols-2 md:gap-16">
           <div>
-            <h1 class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]">
-            Discover our shop
+            <h1
+              class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]"
+            >
+              Discover our shop
             </h1>
             <p class="mx-auto max-w-[700px] text-[#3b2a22] md:text-xl">
               Explore our selection of premium coffee beans, roasted to
@@ -48,7 +49,9 @@ const cards = await getCollection("cards");
           class="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <div class="space-y-2">
-            <h1 class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]">
+            <h1
+              class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]"
+            >
               Our Coffee Varieties
             </h1>
             <p
@@ -62,9 +65,11 @@ const cards = await getCollection("cards");
         <div
           class="grid md:grid-cols-3 md:px-10 md:gap-x-7 sm:px-48 px-20 2xl:px-72 xl: pt-8 md:pb-16 pb-6 gap-y-10 gap-x-12"
         >
-          {cards.slice(0, 3).map((card) => (
-            <ProductCard card={card} key={card.data.title} />
-          ))}
+          {
+            cards
+              .slice(0, 3)
+              .map((card) => <ProductCard card={card} key={card.data.title} />)
+          }
         </div>
       </div>
       <div class="w-full flex items-center justify-center">
@@ -74,7 +79,4 @@ const cards = await getCollection("cards");
       </div>
     </section>
   </main>
-  <ContactUs />
-  <Contacts />
-</div>
-<Footer />
+</Layout>

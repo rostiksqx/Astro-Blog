@@ -1,35 +1,39 @@
 ---
 import { Image } from "astro:assets";
 import { marked } from "marked";
-
-interface Props {
-  card: {
+interface ProductCard {
+  card?: {
     id: string;
     slug: string;
     body: string;
     collection: string;
-    data: { title: string; image: string, price:number };
+    data: { title: string; image: string; price: number };
   };
 }
 
-const { card }: Props = Astro.props;
-const body = marked.parse(card.body);
+const { card }: ProductCard = Astro.props;
+const body = marked.parse(card!.body);
 ---
 
 <div
   class="group border border-[#3b2a22] h-full overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2"
 >
-  <Image src={card.data.image} alt={card.data.title} />
+  <Image
+    src={card!.data.image}
+    alt={card!.data.title}
+    width={500}
+    height={300}
+  />
   <div
     class="bg-[#3b2a22] text-[#e9d7cb] h-full flex-none flex-col w-full justify-between p-4"
   >
     <div>
-      <h3 class="font-semibold text-xl">{card.data.title}</h3>
+      <h3 class="font-semibold text-xl">{card!.data.title}</h3>
       <p class="text-sm line-clamp-2">
         <article set:html={body} />
       </p>
     </div>
 
-    <h4 class="font-semibold text-lg md:text-xl">${card.data.price}</h4>
+    <h4 class="font-semibold text-lg md:text-xl">${card!.data.price}</h4>
   </div>
 </div>

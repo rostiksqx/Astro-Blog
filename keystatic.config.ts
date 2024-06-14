@@ -24,6 +24,7 @@ export default config({
           directory: 'src/assets/cards',
           publicPath: '/src/assets/cards/',
         }),
+        price: fields.number({ label: 'Price' }),
       },
     }),
   },

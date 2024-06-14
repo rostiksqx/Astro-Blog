@@ -8,7 +8,7 @@ interface Props {
     slug: string;
     body: string;
     collection: string;
-    data: { title: string; image: string };
+    data: { title: string; image: string, price:number };
   };
 }
 
@@ -30,6 +30,6 @@ const body = marked.parse(card.body);
       </p>
     </div>
 
-    <h4 class="font-semibold text-lg md:text-xl">$14.99</h4>
+    <h4 class="font-semibold text-lg md:text-xl">${card.data.price}</h4>
   </div>
 </div>

@@ -6,6 +6,7 @@ const cards = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     image: image(),
+    price: z.number(),
   }),
 });
 

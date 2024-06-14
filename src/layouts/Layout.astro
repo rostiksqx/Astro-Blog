@@ -21,34 +21,6 @@ const { title, description } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<header
-			class="flex items-center justify-between px-4 py-3 bg-black text-white"
-		>
-			<div class="flex items-center">
-				<a class="mr-4" href="/">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="h-6 w-6"
-					>
-						<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
-					</svg>
-					<span class="sr-only">Blog Logo</span>
-				</a>
-				<h1 class="text-lg font-bold">My Blog</h1>
-			</div>
-			<!-- <a href="/keystatic" class="hover:underline">Yadolboeb</a> -->
-			<nav class="flex items-center space-x-4">
-				<a class="hover:underline" href="/">Posts</a>
-			</nav>
-		</header>
 		<slot />
 	</body>
 </html>

@@ -1,5 +1,44 @@
-
-
-<h1 class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]">
-    <slot/>
-</h1>
+<header class="px-4 lg:px-6 h-14 flex items-center bg-[#3b2a22] text-white">
+    <a class="flex items-center gap-x-2 justify-center" href="#">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6"
+      >
+        <path d="M10 2v2"></path>
+        <path d="M14 2v2"></path>
+        <path
+          d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"
+        ></path>
+        <path d="M6 2v2"></path>
+      </svg>
+      <span class="">DristalnyaCoffee</span>
+    </a>
+    <nav class="ml-auto flex gap-4 sm:gap-6">
+      <a
+        href="#"
+        class="text-sm font-medium hover:underline underline-offset-4"
+      >
+        Shop
+      </a>
+      <a
+        class="text-sm font-medium hover:underline underline-offset-4"
+        href="#"
+      >
+        About
+      </a>
+      <a
+        class="text-sm font-medium hover:underline underline-offset-4"
+        href="#"
+      >
+        Contact
+      </a>
+    </nav>
+  </header>

@@ -19,9 +19,6 @@ const body = marked.parse(card.body);
 <div
   class="group border border-[#3b2a22] h-full overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2"
 >
-  <a class="absolute inset-0 z-10" href="#">
-    <span class="sr-only">View</span>
-  </a>
   <Image src={card.data.image} alt={card.data.title} width="300" height="200" />
   <div
     class="bg-[#3b2a22] text-[#e9d7cb] h-full flex-none flex-col w-full justify-between p-4"

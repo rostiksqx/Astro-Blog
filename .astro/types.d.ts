@@ -140,10 +140,8 @@ declare module 'astro:content' {
   slug: "test-card";
   body: string;
   collection: "cards";
-  data: any
+  data: InferEntrySchema<"cards">
 } & { render(): Render[".mdoc"] };
-};
-"posts": {
 };
 
 	};

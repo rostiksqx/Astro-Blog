@@ -15,13 +15,14 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         }
 
         const apiKey = import.meta.env.EMAIL_SERVICE_API_KEY;
+        const ownerEmail = import.meta.env.OWNER_EMAIL;
         const resend = new Resend(apiKey);
 
         resend.emails.send({
             from: 'onboarding@resend.dev',
-            to: email.toString(),
-            subject: 'Thank you for choosing our coffee shop!',
-            html: '<p>Bro you are real <strong>sigma</strong>!</p>'
+            to: ownerEmail,
+            subject: 'New message from your website!',
+            text: `New message from Name:${name} (${email}). Message: ${message}`,
         });
 
         return redirect("/thank-you");

@@ -1,28 +1,5 @@
 ---
 import Button from "./Button.astro";
-import { Resend } from "resend";
-
-const secretKey = import.meta.env.SECRET_KEY;
-const resend = new Resend(secretKey);
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-
-    resend.emails.send({
-      from: email as string,
-      to: "rostyslav.derkach@knu.ua",
-      subject: `New message from ${name}`,
-      text: message as string,
-    });
-    console.log("Email sent successfully");
-  } catch (error) {
-    console.error(error.message);
-  }
-}
 ---
 
 <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]" id="contact">
@@ -43,7 +20,7 @@ if (Astro.request.method === "POST") {
       </p>
     </div>
     <div class="mx-auto w-full max-w-sm space-y-2">
-      <form class="flex flex-col space-y-2" method="POST">
+      <form class="flex flex-col space-y-2" method="POST" id="form">
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
             <label
@@ -92,11 +69,40 @@ if (Astro.request.method === "POST") {
             name="message"></textarea>
         </div>
         <Button type="submit">Submit</Button>
-        <!-- <div id="result" class="text-xl font-bold"></div> -->
+        <div id="result" class="text-xl font-bold"></div>
       </form>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  import { Resend } from "resend";
+  const secretKey = import.meta.env.SECRET_KEY;
+  const resend = new Resend(secretKey);
+
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", async function () {
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const name = formData.get("name");
+    const message = formData.get("message");
+
+    try {
+      resend.emails.send({
+        to: ["rostikboss2005@gmail.com"],
+        from: "onboarding@resend.dev",
+        html: '<p>Congrats on sending your <strong>first email</strong>!</p><hr /><p style="color:#898989;font-size:12px;">2261 Market Street #5039 - San Francisco, CA 94114</p>',
+        text: "Congrats on sending your first email!",
+        subject: "Hello World",
+      });
+      console.log("Email sent successfully");
+    } catch (error) {
+      console.error(error);
+    }
+  });
+</script>
 
 <!-- <script is:inline>
   const form = document.getElementById("form");

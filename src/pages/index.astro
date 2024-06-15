@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Layout from "../layouts/Layout.astro";
+import ContactUs from '../components/ContactUs.astro'
+import Contacts from '../components/Contacts.astro'
 
 const cards = await getCollection("cards");
 ---
@@ -13,10 +15,10 @@ const cards = await getCollection("cards");
 >
   <main class="flex-1">
     <section
-      class="w-full pt-12 md:pt-24 lg:pt-32 bg-[url('/coffee-beans.jpg')] bg-cover bg-center bg-no-repeat"
+      class="w-full bg-white/80 pt-12   bg-cover bg-center bg-no-repeat"
     >
       <div
-        class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm bg-white/80 p-10 rounded-lg"
+        class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm p-10 rounded-lg"
       >
         <div class="grid gap-4 px-10 md:grid-cols-2 md:gap-16">
           <div>
@@ -79,4 +81,8 @@ const cards = await getCollection("cards");
       </div>
     </section>
   </main>
+
+  
+  <ContactUs />
+  <Contacts />
 </Layout>

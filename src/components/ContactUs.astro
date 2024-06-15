@@ -1,7 +1,28 @@
 ---
 import Button from "./Button.astro";
+import { Resend } from "resend";
 
-const secretKey = import.meta.env.PUBLIC_SECRET_KEY;
+const secretKey = import.meta.env.SECRET_KEY;
+const resend = new Resend(secretKey);
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    resend.emails.send({
+      from: email as string,
+      to: "rostyslav.derkach@knu.ua",
+      subject: `New message from ${name}`,
+      text: message as string,
+    });
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 ---
 
 <section class="w-full py-12 md:py-24 lg:py-32 bg-[#e9d7cb]" id="contact">
@@ -22,8 +43,7 @@ const secretKey = import.meta.env.PUBLIC_SECRET_KEY;
       </p>
     </div>
     <div class="mx-auto w-full max-w-sm space-y-2">
-      <form class="flex flex-col space-y-2" method="POST" id="form">
-        <input type="hidden" name="access_key" value={secretKey} />
+      <form class="flex flex-col space-y-2" method="POST">
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
             <label
@@ -72,13 +92,13 @@ const secretKey = import.meta.env.PUBLIC_SECRET_KEY;
             name="message"></textarea>
         </div>
         <Button type="submit">Submit</Button>
-        <div id="result" class="text-xl font-bold"></div>
+        <!-- <div id="result" class="text-xl font-bold"></div> -->
       </form>
     </div>
   </div>
 </section>
 
-<script is:inline>
+<!-- <script is:inline>
   const form = document.getElementById("form");
   const result = document.getElementById("result");
 
@@ -120,4 +140,4 @@ const secretKey = import.meta.env.PUBLIC_SECRET_KEY;
         }, 10000);
       });
   });
-</script>
+</script> -->

@@ -5,6 +5,7 @@ import ProductCard from "../components/ProductCard.astro";
 import Layout from "../layouts/Layout.astro";
 import ContactUs from "../components/ContactUs.astro";
 import Contacts from "../components/Contacts.astro";
+import { Image } from "astro:assets";
 
 const cards = await getCollection("cards");
 ---
@@ -31,12 +32,11 @@ const cards = await getCollection("cards");
             </p>
           </div>
           <div class="w-full h-full aspect-[16/9]">
-            <img
+            <Image
               src="https://www.coffeehit.co.uk/cdn/shop/articles/coffee-beans-101-the-4-most-popular-beans-explained_5400x.jpg?v=1708448895"
               width="1270"
               height="700"
               alt="Coffee Beans"
-              style=""
               class="mx-auto aspect-[16/9] overflow-hidden rounded-t-xl object-cover"
             />
           </div>

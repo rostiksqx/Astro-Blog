@@ -3,8 +3,8 @@ import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Layout from "../layouts/Layout.astro";
-import ContactUs from '../components/ContactUs.astro'
-import Contacts from '../components/Contacts.astro'
+import ContactUs from "../components/ContactUs.astro";
+import Contacts from "../components/Contacts.astro";
 
 const cards = await getCollection("cards");
 ---
@@ -14,9 +14,7 @@ const cards = await getCollection("cards");
   description="Dristalnya Coffee where you can buy something drugs"
 >
   <main class="flex-1">
-    <section
-      class="w-full bg-white/80 pt-12   bg-cover bg-center bg-no-repeat"
-    >
+    <section class="w-full bg-white/80 pt-12 bg-cover bg-center bg-no-repeat">
       <div
         class="w-full space-y-10 xl:space-y-16 backdrop-blur-sm p-10 rounded-lg"
       >
@@ -51,11 +49,11 @@ const cards = await getCollection("cards");
           class="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <div class="space-y-2">
-            <h1
+            <h2
               class="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[4rem] text-[#3b2a22]"
             >
               Our Coffee Varieties
-            </h1>
+            </h2>
             <p
               class="max-w-[900px] text-[#3b2a22] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
             >
@@ -82,7 +80,6 @@ const cards = await getCollection("cards");
     </section>
   </main>
 
-  
   <ContactUs />
   <Contacts />
 </Layout>

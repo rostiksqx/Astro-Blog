@@ -1,14 +1,14 @@
 ---
 import "../styles.css";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import ContactUs from "../components/ContactUs.astro";
-import Contacts from "../components/Contacts.astro";
+import Seo from "../components/Seo.astro";
 
 export interface Props {
 	title: string;
 	description: string;
 }
+
+const url = Astro.url.href;
 
 const { title, description }: Props = Astro.props;
 ---
@@ -18,21 +18,38 @@ const { title, description }: Props = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="title" content={title} />
-		<meta
-			name="description"
-			content={description ??
-				"WebSite where you can buy delicious coffee"}
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<Seo
+			title={title}
+			description={description}
+			siteName="Dristalnya Coffee"
+			url={url}
+			img="/og-image.png"
+			imgType="image/png"
+			lang="en"
+			twitterProfile="https://twitter.com/dristalnyacoffee"
+			linkedinProfile="https://www.linkedin.com/in/dristalnya-coffee"
+			logo="https://astro-coffee.onrender.com/favicon.svg"
+			contactUrl="https://astro-coffee.onrender.com/#contact"
+			keywords={[
+				"coffee",
+				"cafe",
+				"dristalnya",
+				"dristalnya coffee",
+				"astro",
+				"astro coffee",
+				"site",
+				"website",
+				"web",
+			]}
 		/>
-		<title>{title}</title>
 	</head>
 	<body>
 		<Header />
-		<div class="flex flex-col bg-[#e9d7cb]  h-[100vh] w-100">
+		<div class="flex flex-col bg-[#e9d7cb] h-[100vh] w-100">
 			<slot />
 		</div>
-		<Footer />
 	</body>
 </html>

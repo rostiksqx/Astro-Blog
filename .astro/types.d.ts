@@ -135,23 +135,23 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"cards": {
-"coffee-dlya-bomja.mdoc": {
-	id: "coffee-dlya-bomja.mdoc";
-  slug: "coffee-dlya-bomja";
+"americano.mdoc": {
+	id: "americano.mdoc";
+  slug: "americano";
   body: string;
   collection: "cards";
   data: InferEntrySchema<"cards">
 } & { render(): Render[".mdoc"] };
-"default-coffee.mdoc": {
-	id: "default-coffee.mdoc";
-  slug: "default-coffee";
+"bean-coffee.mdoc": {
+	id: "bean-coffee.mdoc";
+  slug: "bean-coffee";
   body: string;
   collection: "cards";
   data: InferEntrySchema<"cards">
 } & { render(): Render[".mdoc"] };
-"super-coffee.mdoc": {
-	id: "super-coffee.mdoc";
-  slug: "super-coffee";
+"jacobs.mdoc": {
+	id: "jacobs.mdoc";
+  slug: "jacobs";
   body: string;
   collection: "cards";
   data: InferEntrySchema<"cards">
